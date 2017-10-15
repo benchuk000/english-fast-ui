@@ -1,0 +1,8 @@
+.welcome {
+  display: flex;
+  justify-content: flex-end;
+
+}
+.welcome__img{
+  padding: 60px;
+}

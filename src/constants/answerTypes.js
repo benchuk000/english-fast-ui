@@ -1,0 +1,3 @@
+export const SINGLE_CHOICE = 'SINGLE_CHOICE';
+export const MULTI_CHOICE = 'MULTI_CHOICE';
+export const DRAG_AND_DROP = 'DRAG_AND_DROP';
