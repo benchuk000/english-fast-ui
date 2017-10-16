@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "gridlex": "^2.4.1",
     "material-ui": "^0.19.1",
     "prop-types": "^15.6.0",
     "react": "^15.6.1",
@@ -14,6 +15,7 @@
     "react-redux-toastr": "^7.1.5",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
+    "recharts": "^1.0.0-alpha.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },

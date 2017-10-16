@@ -3,10 +3,20 @@ import axios from 'axios';
 import { toastr } from 'react-redux-toastr';
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const START_USER_LOADING = 'START_USER_LOADING';
+export const FINISH_USER_LOADING = 'FINISH_USER_LOADING';
 
 export const setCurrentUser = user => ({
   type: SET_CURRENT_USER,
   user,
+});
+
+export const startUserLoading = () => ({
+  type: START_USER_LOADING
+});
+
+export const finishUserLoading = () => ({
+  type: FINISH_USER_LOADING
 });
 
 export const signIn = (data, callback = () => {}) => dispatch => {
@@ -22,8 +32,12 @@ export const signIn = (data, callback = () => {}) => dispatch => {
 };
 
 export const signInUserByToken = (data, callback = () => {}) => dispatch => {
+  dispatch(startUserLoading());
   axios.get(`${API_URL}/me`)
-    .then(res => dispatch(setCurrentUser(res.data.user)))
+    .then(res => {
+      dispatch(setCurrentUser(res.data.user));
+      dispatch(finishUserLoading());
+    })
     .catch(({ response }) => toastr.error(response.data))
 };
 

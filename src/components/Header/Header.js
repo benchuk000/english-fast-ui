@@ -1,20 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import AppBar from 'material-ui/AppBar';
 
 import './Header.css';
 import HeaderModal from '../../containers/HeaderModal/HeaderModal';
 import logo from './logo.png';
 
 const Header = ({ children }) => (
-  <div className="header">
-    <div className="header__logo">
-      <img src={logo} className="header__logo__img"/>
-    </div>
-    <div className="header__buttons">
-      { children }
-    </div>
-
+  <AppBar
+    title={<Link to="/"><img src={logo} className="header__logo__img"/></Link>}
+    showMenuIconButton={false}
+    iconStyleRight={{ margin: 0}}
+    iconElementRight={<div className="header__buttons">{ children }</div>}
+  >
     <HeaderModal/>
-  </div>
+  </AppBar>
 );
 
 export default Header;

@@ -63,7 +63,7 @@ class CardTargetContainer extends React.Component {
     }
 }
 
-const CardTargetContainerSource = DragSource('CARD', cardSource, collectSource);
-const CardTargetContainerTargetAndSource = DropTarget('CARD', squareTarget, collectTarget)
+const CardTargetContainerSource = DragSource('CARD', cardSource, collectSource)(CardTargetContainer);
+const CardTargetContainerTargetAndSource = DropTarget('CARD', squareTarget, collectTarget)(CardTargetContainerSource)
 
 export default connect()(CardTargetContainerTargetAndSource);

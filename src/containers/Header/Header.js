@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import * as authActions from '../../actions/auth';
 import * as headerModalActions from '../../actions/headerModal';
 import Header from '../../components/Header/Header';
+import HeaderMenu from '../HeaderMenu/HeaderMenu';
 
 class HeaderContainer extends Component {
 
@@ -23,10 +24,7 @@ class HeaderContainer extends Component {
     ];
 
     const userButtons = [
-      <RaisedButton 
-        label="Выйти" 
-        onClick={() => this.props.logout()}
-      />
+      <HeaderMenu />
     ];
 
     return (
