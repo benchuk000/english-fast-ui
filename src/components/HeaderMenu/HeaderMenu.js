@@ -2,10 +2,8 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
-import { Link } from 'react-router-dom';
 
-const HeaderMenu = ({ isOpen, anchorEl, handleTouchTap, handleRequestClose, handleItemTouchTap }) => (
+const HeaderMenu = ({ isOpen, anchorEl, handleTouchTap, handleRequestClose, handleItemTouchTap, children }) => (
   <div>
     <RaisedButton
       onClick={handleTouchTap}
@@ -18,9 +16,8 @@ const HeaderMenu = ({ isOpen, anchorEl, handleTouchTap, handleRequestClose, hand
       targetOrigin={{horizontal: 'left', vertical: 'top'}}
       onRequestClose={handleRequestClose}
     >
-      <Menu onItemTouchTap={handleItemTouchTap}>
-        <Link to="profile"><MenuItem action="profile" primaryText="Profile"/></Link>
-        <MenuItem action="logout" primaryText="Sign out"/>
+      <Menu onItemTouchTap={handleItemTouchTap} onClick={handleRequestClose}>
+        {children}
       </Menu>
     </Popover>
   </div>

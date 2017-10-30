@@ -8,8 +8,6 @@ import Header from '../../components/Header/Header';
 import HeaderMenu from '../HeaderMenu/HeaderMenu';
 
 class HeaderContainer extends Component {
-
-
   render() {
     const authButtons = [
       <RaisedButton 

@@ -38,7 +38,10 @@ export const signInUserByToken = (data, callback = () => {}) => dispatch => {
       dispatch(setCurrentUser(res.data.user));
       dispatch(finishUserLoading());
     })
-    .catch(({ response }) => toastr.error(response.data))
+    .catch(({ response }) => {
+      dispatch(finishUserLoading());
+      toastr.error(response.data);
+    })
 };
 
 export const logout = () => dispatch => {

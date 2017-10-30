@@ -45,24 +45,26 @@ const Quiz = ({
 
     <div>
         <RaisedButton
-          label={isQuestionLast() && !!response ? 'Reset' :'Back'}
+          label={isQuestionLast() && !!response ? 'Пройти заново' :'Назад'}
           secondary={true}
           onClick={onPrevButtonClick}
           disabled={isQuestionFirst() && !response}
         />
         <RaisedButton
-          label={isQuestionLast() ? 'Submit' : 'Next'}
+          label={isQuestionLast() ? 'Отправить' : 'Вперед'}
           primary={true}
           onClick={onNextButtonClick}
           disabled={currentAnswer.length === 0 || !!response}
         />
     </div>
 
-    <div>
-        <h3>
-            {response ? `Your result is ${this.props.response.result}% !` : ''}
-        </h3>
-    </div>
+    {
+      response && (
+        <div>
+          {`Количесвто правильных ответов: ${response.result.filter(item => item.isCorrect).length}`}
+        </div>
+      )
+    }
   </div>
 );
 

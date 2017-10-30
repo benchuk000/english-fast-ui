@@ -8,7 +8,7 @@ class ProfileContainer extends Component {
   state = {}
 
   componentDidMount() {
-    userService.getUser(this.props.userId)
+    userService.getUser(this.props.match.params.userId)
       .then(({ data }) => this.setState(data[0]))
       .catch(({ response }) => console.log(response.data));
   }
@@ -20,8 +20,4 @@ class ProfileContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  userId: state.auth.currentUser && state.auth.currentUser._id
-});
-
-export default connect(mapStateToProps)(ProfileContainer);
+export default ProfileContainer;

@@ -2,7 +2,7 @@ import * as types from '../actions/currentQuiz.js';
 
 const defaultState = {
   data: null,
-  answers: [],
+  answers: {},
   currentAnswer: [],
   currentQuiestionIndex: 0,
   response: null
@@ -11,19 +11,20 @@ const defaultState = {
 const currentQuiz = (state = defaultState, action) => {
   let currentQuiestionIndex = 0;
   let currentAnswer = [];
+  let answerKey = null;
 
   switch (action.type) {
       case types.SET_CURRENT_QUIZ:
         return {
           ...state,
           data: action.quiz,
-          answers: [],
+          answers: {},
           currentAnswer: []
         }
       case types.RESET_CURRENT_QUIZ:
         return {
           ...state,
-          answers: [],
+          answers: {},
           currentAnswer: [],
           currentQuiestionIndex: 0,
           response: null
@@ -34,17 +35,19 @@ const currentQuiz = (state = defaultState, action) => {
           currentAnswer: action.currentAnswer
         }
       case types.ADD_CURRENT_ANSEWER_TO_ANSWERS:
-        let answers = [ ...state.answers ];
-
-        answers[state.currentQuiestionIndex] = state.currentAnswer;
+        answerKey = state.data.questions[state.currentQuiestionIndex]._id;
 
         return {
           ...state,
-          answers,
+          answers: { 
+            ...state.answers,
+            [answerKey]: state.currentAnswer
+          }
         }
       case types.TO_NEXT_QUESTION:
         currentQuiestionIndex = state.currentQuiestionIndex + 1;
-        currentAnswer = state.answers[currentQuiestionIndex] ? state.answers[currentQuiestionIndex]: [];
+        answerKey = state.data.questions[currentQuiestionIndex]._id;
+        currentAnswer = state.answers[answerKey] ? state.answers[answerKey]: [];
 
         return {
           ...state,
@@ -53,7 +56,8 @@ const currentQuiz = (state = defaultState, action) => {
         }
       case types.TO_PREV_QUESTION:
         currentQuiestionIndex = state.currentQuiestionIndex - 1;
-        currentAnswer = state.answers[currentQuiestionIndex] ? state.answers[currentQuiestionIndex]: [];
+        answerKey = state.data.questions[currentQuiestionIndex]._id;
+        currentAnswer = state.answers[answerKey] ? state.answers[answerKey]: [];
 
         return {
           ...state,
