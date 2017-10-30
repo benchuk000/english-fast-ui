@@ -16,7 +16,7 @@ const HeaderMenu = ({ isOpen, anchorEl, handleTouchTap, handleRequestClose, hand
       targetOrigin={{horizontal: 'left', vertical: 'top'}}
       onRequestClose={handleRequestClose}
     >
-      <Menu onItemTouchTap={handleItemTouchTap} onClick={handleRequestClose}>
+      <Menu onItemTouchTap={handleRequestClose}>
         {children}
       </Menu>
     </Popover>

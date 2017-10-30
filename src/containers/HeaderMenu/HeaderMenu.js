@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MenuItem from 'material-ui/MenuItem';
 
+import * as authActions from '../../actions/auth';
+
 import HeaderMenu from '../../components/HeaderMenu/HeaderMenu';
 
 class HeaderMenuContainer extends Component {
@@ -27,14 +29,21 @@ class HeaderMenuContainer extends Component {
           primaryText="Manage Users"
           containerElement={<Link to="/manage/users" />}
         />
-        <MenuItem action="logout" primaryText="Sign out"/>
+        <MenuItem
+          onClick={this.props.logout}
+          primaryText="Sign out"
+        />
       </HeaderMenu>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   userId: state.auth.currentUser && state.auth.currentUser._id,
 });
 
-export default connect(mapStateToProps)(HeaderMenuContainer);
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(authActions.logout()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderMenuContainer);
