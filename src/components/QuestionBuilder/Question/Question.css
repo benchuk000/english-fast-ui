@@ -1,0 +1,4 @@
+.question__answer {
+  display: flex;
+  align-items: center;
+}

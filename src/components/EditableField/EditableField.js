@@ -5,6 +5,8 @@ import ModeEditIcon from 'material-ui/svg-icons/editor/mode-edit';
 import DoneIcon from 'material-ui/svg-icons/action/done';
 import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import IconButton from 'material-ui/IconButton';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 import './EditableField.css';
 
@@ -21,7 +23,7 @@ class EditableField extends Component {
 
   static defaultProps = {
     children: null,
-    input: { value: '' }
+    input: { type: 'text', value: '' }
   }
 
   state = {
@@ -29,7 +31,16 @@ class EditableField extends Component {
     inputValue: this.props.input.value,
   }
 
-  onInputChange = e => this.setState({ inputValue: e.target.value });
+  componentWillReciveProps(nextProps, nextState) {
+    nextState = {
+      ...this.state,
+      inputValue: this.props.input.value,
+    }
+  }
+
+  onInputChange = (e, key, selectedOption) => {
+    this.setState({ inputValue: e.target.value || selectedOption });
+  }
 
   onSubmit = () => {
     this.props.onSubmit({ name: this.props.input.name, value: this.state.inputValue });
@@ -46,19 +57,40 @@ class EditableField extends Component {
   }));
 
   render() {
+    const editComponent = this.props.input.type === 'select'
+      ? (
+        <SelectField
+          {...this.props.input}
+          value={this.state.inputValue}
+          key="select"
+          onChange={this.onInputChange}
+          className="form-control"
+          underlineShow={false}
+        >
+          {
+            this.props.input.options.map((option, index) => (
+              <MenuItem value={option.value} key={index} primaryText={option.title} />
+            ))
+          }
+        </SelectField>
+      )
+      : (
+        <TextField
+          {...this.props.input}
+          key="input"
+          className="form-control"
+          value={this.state.inputValue}
+          onChange={this.onInputChange}
+          underlineShow={false}
+        />
+      );
+
     return (
       <div className="editable-field">
         {
           this.state.isEditMode
             ? [
-              <TextField
-                {...this.props.input}
-                key="input"
-                className="form-control"
-                value={this.state.inputValue}
-                onChange={this.onInputChange}
-                underlineShow={false}
-              />,
+              editComponent,
               <IconButton
                 touch
                 onClick={this.onSubmit}

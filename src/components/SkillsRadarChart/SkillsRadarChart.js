@@ -15,7 +15,7 @@ const SkillsRadarChart = ({ data = []}) => (
       <PolarGrid />
       <PolarAngleAxis dataKey="skill" />
       <PolarRadiusAxis/>
-      <Radar dataKey="value" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
+      <Radar dataKey="value" stroke="#8884d8" fill="#8884d8" fillOpacity={0.9}/>
     </RadarChart>
   </ResponsiveContainer>
 );

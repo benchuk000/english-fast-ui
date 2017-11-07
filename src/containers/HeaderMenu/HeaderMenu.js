@@ -30,8 +30,8 @@ class HeaderMenuContainer extends Component {
           containerElement={<Link to="/manage/users" />}
         />
         <MenuItem 
-          primaryText="Quiz Builder"
-          containerElement={<Link to="/quiz-builder" />}
+          primaryText="Question Builder"
+          containerElement={<Link to="/question-builder" />}
         />
         <MenuItem
           onClick={this.props.logout}

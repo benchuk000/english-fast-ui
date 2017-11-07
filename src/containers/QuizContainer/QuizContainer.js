@@ -61,7 +61,7 @@ const mapStateToProps = state => ({
     name: state.currentQuiz.data ? state.currentQuiz.data.name : '',
     questions: state.currentQuiz.data ? state.currentQuiz.data.questions : [],
     questionTitle: state.currentQuiz.data ? state.currentQuiz.data.questions[state.currentQuiz.currentQuiestionIndex].title : '',
-    type: state.currentQuiz.data ? state.currentQuiz.data.type : '',
+    type: state.currentQuiz.data ? state.currentQuiz.data.questions[state.currentQuiz.currentQuiestionIndex].answerType : '',
     currentAnswer: state.currentQuiz.currentAnswer ? state.currentQuiz.currentAnswer : [],
     currentQuiestionIndex: state.currentQuiz.currentQuiestionIndex,
     answers: state.currentQuiz.data ? state.currentQuiz.data.questions[state.currentQuiz.currentQuiestionIndex].answers : [],

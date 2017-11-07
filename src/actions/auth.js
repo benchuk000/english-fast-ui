@@ -40,7 +40,6 @@ export const signInUserByToken = (data, callback = () => {}) => dispatch => {
     })
     .catch(({ response }) => {
       dispatch(finishUserLoading());
-      toastr.error(response.data);
     })
 };
 

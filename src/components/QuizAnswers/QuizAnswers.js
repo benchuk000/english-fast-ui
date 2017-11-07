@@ -23,7 +23,7 @@ const QuizAnswers = ({ answers, data, type, onChange, onCheck, onDrop, onDropEnd
                     answers.map((answer, index) => (
                         <RadioButton key={index}
                             value={index}
-                            label={answer}
+                            label={answer.title}
                         />
                     ))
                 }
@@ -34,7 +34,7 @@ const QuizAnswers = ({ answers, data, type, onChange, onCheck, onDrop, onDropEnd
                 {
                     answers.map((answer, index) => (
                         <Checkbox key={index}
-                            label={answer}
+                            label={answer.title}
                             value={index}
                             onCheck={onCheck}
                             checked={currentAnswer.indexOf(index) >= 0}
