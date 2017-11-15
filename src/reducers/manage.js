@@ -36,7 +36,7 @@ const manage = (state = defaultState, action) => {
         isLoading: false,
       };
     }
-    case types.GET_ITEMS_REQUEST_SUCCESS: {
+    case types.REMOVE_ITEM_REQUEST_SUCCESS: {
       const items = { ...state.items };
 
       delete items[state.selectedItemId];

@@ -12,6 +12,10 @@ class QuizBuilderContainer extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.resetQuestion();
+  }
+
   onTrueAnswerChange = (answerIndex, value) => {
     let answers = this.props.data.answers;
 
@@ -55,6 +59,7 @@ const mapDispatchToProps = (dispatch, { match: { params } }) => ({
   fetchQuestion: () => dispatch(actions.fetchQuestion(params.id)),
   onChange: ({ name, value }) => dispatch(actions.updateQuestion({ [name]: value })),
   saveQuiz: () => dispatch(actions.saveQuestion()),
+  resetQuestion: () => dispatch(actions.resetQuestion()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizBuilderContainer);

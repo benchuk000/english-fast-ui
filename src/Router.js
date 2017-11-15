@@ -8,6 +8,7 @@ import WelcomePage from './containers/WelcomePage/WelcomePage';
 import Profile from './containers/Profile/Profile';
 import SkillsTestContainer from './containers/SkillsTestContainer/SkillsTestContainer';
 import QuestionBuilder from './containers/QuestionBuilder/QuestionBuilder';
+import ArticleBuilder from './containers/ArticleBuilder/ArticleBuilder';
 import requireAuth from './helpers/requireAuth';
 
 import Manage from './containers/Manage/Manage';
@@ -22,6 +23,8 @@ class Router extends Component {
         <Route exact path='/skills-test' component={requireAuth(SkillsTestContainer)}/>
         <Route exact path="/question-builder" component={requireAuth(QuestionBuilder, true)}/>
         <Route exact path="/question-builder/:id" component={requireAuth(QuestionBuilder, true)}/>
+        <Route exact path="/article-builder" component={requireAuth(ArticleBuilder, true)}/>
+        <Route exact path="/article-builder/:id" component={requireAuth(ArticleBuilder, true)}/>
         {/* <Route exact path="/quiz-builder" component={requireAuth(QuizBuilder, true)}/> */}
         {/* <Route exact path="/quiz-builder/:quizId" component={requireAuth(QuizBuilder, true)}/> */}
         <Route path="/manage/:type" component={requireAuth(Manage, true)}/>

@@ -30,6 +30,14 @@ class HeaderMenuContainer extends Component {
           containerElement={<Link to="/manage/users" />}
         />
         <MenuItem 
+          primaryText="Manage Questions"
+          containerElement={<Link to="/manage/questions" />}
+        />
+        <MenuItem 
+          primaryText="Manage Articles"
+          containerElement={<Link to="/manage/articles" />}
+        />
+        <MenuItem 
           primaryText="Question Builder"
           containerElement={<Link to="/question-builder" />}
         />

@@ -5,6 +5,7 @@ import { MuiThemeProvider } from 'material-ui/styles';
 
 import 'gridlex/docs/gridlex.min.css';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
+import theme from 'react-quill/dist/quill.snow.css';
 
 import './index.css';
 

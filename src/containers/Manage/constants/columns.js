@@ -33,4 +33,14 @@ export default {
       title: 'Answer Type'
     },
   ],
+  [TYPE.ARTICLES]: [
+    {
+      name: 'name',
+      title: 'Name',
+    },
+    {
+      name: 'theme',
+      title: 'Theme',
+    },
+  ],
 };

@@ -7,6 +7,7 @@ import headerModal from './headerModal';
 import manageUsers from './manageUsers';
 // import quizBuilder from './quizBuilder';
 import questionBuilder from './questionBuilder';
+import articleBuilder from './articleBuilder';
 import manage from './manage';
 
 const rootReducer = combineReducers({
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   manageUsers,
   // quizBuilder,
   questionBuilder,
+  articleBuilder,
   manage,
 });
 

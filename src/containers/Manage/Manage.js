@@ -35,6 +35,8 @@ class ManageContainer extends Component {
         return this.props.history.push(`/profile/${this.props.selectedItemId}`);
       case TYPE.QUESTIONS:
         return this.props.history.push(`/question-builder/${this.props.selectedItemId}`);
+      case TYPE.ARTICLES:
+        return this.props.history.push(`/article-builder/${this.props.selectedItemId}`);
     }
   }
 
@@ -42,6 +44,8 @@ class ManageContainer extends Component {
     switch (this.props.activeType) {
       case TYPE.QUESTIONS:
         return this.props.history.push(`/question-builder`);
+      case TYPE.ARTICLES:
+        return this.props.history.push(`/article-builder`);
     }
   }
 
