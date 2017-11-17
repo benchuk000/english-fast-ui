@@ -8,8 +8,6 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
-import Avatar from 'material-ui/Avatar';
-
 const Table = ({ columns, items, onRowSelection, isSelected }) => (
   <MaterialTable onRowSelection={onRowSelection}>
     <TableHeader displaySelectAll={false} adjustForCheckbox={false}>

@@ -1,3 +1,6 @@
 .main{
-  height:calc(100% - 65px);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }

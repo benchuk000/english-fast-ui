@@ -9,6 +9,8 @@ export const getUser = (id) => axios.get(`${API_URL}/user/${id}`);
 
 export const getUsers = () => axios.get(`${API_URL}/user`);
 
+export const getUserArticles = () => axios.get(`${API_URL}/user/articles`);
+
 export const updateUserByID = (userID, payload) => axios.put(`${API_URL}/user/${userID}`, payload);
 
 export const removeUser = (userID) => axios.delete(`${API_URL}/user/${userID}`)

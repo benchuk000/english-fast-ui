@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import Dashboard from './components/Dashboard/Dashboard';
 // import QuizBuilder from './containers/QuizBuilder/QuizBuilder';
 
+import Dashboard from './containers/Dashboard/Dashboard';
 import WelcomePage from './containers/WelcomePage/WelcomePage';
 import Profile from './containers/Profile/Profile';
 import SkillsTestContainer from './containers/SkillsTestContainer/SkillsTestContainer';
 import QuestionBuilder from './containers/QuestionBuilder/QuestionBuilder';
 import ArticleBuilder from './containers/ArticleBuilder/ArticleBuilder';
-import requireAuth from './helpers/requireAuth';
-
 import Manage from './containers/Manage/Manage';
+import Article from './containers/Article/Article';
+
+import requireAuth from './helpers/requireAuth';
 
 class Router extends Component {
   render() {
@@ -28,6 +29,7 @@ class Router extends Component {
         {/* <Route exact path="/quiz-builder" component={requireAuth(QuizBuilder, true)}/> */}
         {/* <Route exact path="/quiz-builder/:quizId" component={requireAuth(QuizBuilder, true)}/> */}
         <Route path="/manage/:type" component={requireAuth(Manage, true)}/>
+        <Route path="/article/:id" component={requireAuth(Article)}/>
       </Switch>
     );
   }

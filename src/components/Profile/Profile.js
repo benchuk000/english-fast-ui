@@ -14,7 +14,7 @@ const getSkillsDataForChart = (data = {}) => Object.keys(data).map(key => ({ ski
 
 const Profile = ({ user = {} }) => (
   <div className="grid-noGutter profile">
-    <div className="col-6">
+    <div className="col-6_sm-12_xs-12">
       <div className="profile__data card">
         <Subheader inset={true}>Account data</Subheader>
         <CharacteristicField>
@@ -28,7 +28,7 @@ const Profile = ({ user = {} }) => (
       </div>
     </div>
 
-    <div className="col-6">
+    <div className="col-6_sm-12_xs-12">
       <div className="card">
         <SkillsRadarChart data={getSkillsDataForChart(user.skills)}/>
       </div>
