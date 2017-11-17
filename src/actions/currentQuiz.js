@@ -33,13 +33,6 @@ export const resetCurrentQuiz = () => ({
   type: RESET_CURRENT_QUIZ,
 });
 
-export const fetchQuizzes = () => dispatch => {
-  dispatch(resetCurrentQuiz());
-
-  testService.getTests()
-    .then(res => dispatch(setQuizzes(res.data)));
-};
-
 export const fetchQuiz = id => dispatch => {
   testService.getTest(id)
     .then(res => dispatch(setCurrentQuiz(res.data)));
@@ -48,7 +41,7 @@ export const fetchQuiz = id => dispatch => {
 export const submitQuiz = () => (dispatch, getState) => {
   dispatch(addCurrentAnswerToAnswers());
 
-  testService.submitTest(getState().currentQuiz.data._id, { answers : getState().currentQuiz.answers })
+  testService.submitTest({ answers : getState().currentQuiz.answers })
     .then(res => dispatch(quizResponseRecieved(res.data)));
 };
 

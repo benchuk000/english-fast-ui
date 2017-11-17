@@ -35,15 +35,14 @@ class QuizContainer extends React.Component {
     }
 
     onNextButtonClick = () => this.isQuestionLast() ? this.props.submitQuiz() : this.props.toNextQuestion();
-    onPrevButtonClick = () => this.isQuestionLast() && this.props.response
-      ? this.props.resetCurrentQuiz()
-      : this.props.toPrevQuestion();
+    onPrevButtonClick = () => !this.props.response && this.props.toPrevQuestion();
 
     isQuestionFirst = () => this.props.currentQuiestionIndex === 0;
     isQuestionLast = () => this.props.currentQuiestionIndex === this.props.questions.length - 1;
 
     render() {
       return <Quiz {...this.props}
+        data={this.props.questions}
         onChange={this.onChange}
         onCheck={this.onCheck}
         onDrop={this.onDrop}
@@ -57,15 +56,18 @@ class QuizContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    currentQuiz: state.currentQuiz.data? state.currentQuiz.data : null,
-    name: state.currentQuiz.data ? state.currentQuiz.data.name : '',
-    questions: state.currentQuiz.data ? state.currentQuiz.data.questions : [],
-    questionTitle: state.currentQuiz.data ? state.currentQuiz.data.questions[state.currentQuiz.currentQuiestionIndex].title : '',
-    type: state.currentQuiz.data ? state.currentQuiz.data.questions[state.currentQuiz.currentQuiestionIndex].answerType : '',
+    questions: state.currentQuiz.questions,
+    questionTitle: state.currentQuiz.questions[state.currentQuiz.currentQuiestionIndex] 
+      ? state.currentQuiz.questions[state.currentQuiz.currentQuiestionIndex].title
+      : '',
+    type: state.currentQuiz.questions[state.currentQuiz.currentQuiestionIndex]
+      ? state.currentQuiz.questions[state.currentQuiz.currentQuiestionIndex].answerType
+      : '',
     currentAnswer: state.currentQuiz.currentAnswer ? state.currentQuiz.currentAnswer : [],
     currentQuiestionIndex: state.currentQuiz.currentQuiestionIndex,
-    answers: state.currentQuiz.data ? state.currentQuiz.data.questions[state.currentQuiz.currentQuiestionIndex].answers : [],
-    data: state.currentQuiz.data ? state.currentQuiz.data.questions[state.currentQuiz.currentQuiestionIndex].data : [],
+    answers: state.currentQuiz.questions[state.currentQuiz.currentQuiestionIndex]
+      ? state.currentQuiz.questions[state.currentQuiz.currentQuiestionIndex].answers
+      : [],
     response: state.currentQuiz.response
 });
 

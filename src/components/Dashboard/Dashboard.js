@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import ArticleList from '../ArticleList/ArticleList';
 
@@ -20,7 +21,10 @@ const Dashboard = ({ articles, }) => (
     </div>
 
     <div className="dashboard__quiz">
-      Here will be quiz
+      <RaisedButton
+        label="Pass test"
+        containerElement={<Link to="/skills-test" />}
+      />
     </div>
   </div>
 );

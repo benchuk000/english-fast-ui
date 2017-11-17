@@ -1,4 +1,6 @@
-import { actions as toastrActions } from 'react-redux-toastr';
+import { actions as toastrActions, actions } from 'react-redux-toastr';
+
+import * as skillsTest from './skillsTest';
 
 import * as userService from '../services/userService';
 
@@ -25,7 +27,13 @@ export const getArticles = () => (dispatch, getState) => {
   dispatch(getArticlesRequestStart());
 
   userService.getUserArticles()
-    .then(({ data }) => dispatch(getArticlesRequestSuccess(data)))
+    .then(({ data }) => {
+      dispatch(getArticlesRequestSuccess(data));
+      dispatch(skillsTest.setParams({
+        level: [ getState().auth.currentUser.level ],
+        theme: data.map(article => article.theme),
+      }))
+    })
     .catch(err => dispatch(getArticlesRequestFail()));
 };
 

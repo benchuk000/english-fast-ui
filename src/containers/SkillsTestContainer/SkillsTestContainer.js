@@ -11,7 +11,11 @@ import Paper from 'material-ui/Paper';
 
 class SkillsTestContainer extends Component {
   componentDidMount() {
-    this.props.getSkillsTest();
+    this.props.getTest();
+  }
+
+  componentWillUnmount() {
+    this.props.resetData();
   }
 
   render() {
@@ -24,7 +28,8 @@ class SkillsTestContainer extends Component {
 }
 
 const mapDispatchToprops = dispatch => ({
-  getSkillsTest: () => dispatch(skillsTestActions.getSkillsTest()),
+  getTest: () => dispatch(skillsTestActions.getTest()),
+  resetData: () => dispatch(skillsTestActions.resetData()),
 });
 
 export default connect(

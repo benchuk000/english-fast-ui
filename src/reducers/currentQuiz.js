@@ -1,7 +1,7 @@
 import * as types from '../actions/currentQuiz.js';
 
 const defaultState = {
-  data: null,
+  questions: [],
   answers: {},
   currentAnswer: [],
   currentQuiestionIndex: 0,
@@ -17,7 +17,7 @@ const currentQuiz = (state = defaultState, action) => {
       case types.SET_CURRENT_QUIZ:
         return {
           ...state,
-          data: action.quiz,
+          questions: action.quiz,
           answers: {},
           currentAnswer: []
         }
@@ -35,7 +35,7 @@ const currentQuiz = (state = defaultState, action) => {
           currentAnswer: action.currentAnswer
         }
       case types.ADD_CURRENT_ANSEWER_TO_ANSWERS:
-        answerKey = state.data.questions[state.currentQuiestionIndex]._id;
+        answerKey = state.questions[state.currentQuiestionIndex]._id;
 
         return {
           ...state,
@@ -46,7 +46,7 @@ const currentQuiz = (state = defaultState, action) => {
         }
       case types.TO_NEXT_QUESTION:
         currentQuiestionIndex = state.currentQuiestionIndex + 1;
-        answerKey = state.data.questions[currentQuiestionIndex]._id;
+        answerKey = state.questions[currentQuiestionIndex]._id;
         currentAnswer = state.answers[answerKey] ? state.answers[answerKey]: [];
 
         return {
@@ -56,7 +56,7 @@ const currentQuiz = (state = defaultState, action) => {
         }
       case types.TO_PREV_QUESTION:
         currentQuiestionIndex = state.currentQuiestionIndex - 1;
-        answerKey = state.data.questions[currentQuiestionIndex]._id;
+        answerKey = state.questions[currentQuiestionIndex]._id;
         currentAnswer = state.answers[answerKey] ? state.answers[answerKey]: [];
 
         return {

@@ -6,11 +6,10 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 
 const Quiz = ({
-  name,
+  data,
   currentQuiestionIndex,
   questionTitle,
   answers,
-  data,
   type,
   currentAnswer,
   response,
@@ -25,9 +24,6 @@ const Quiz = ({
   isQuestionLast
 }) => (
   <div>
-    <div>
-        <h1>{name}</h1>
-    </div>
     <div>
         <h3>{`${currentQuiestionIndex + 1}. ${questionTitle}`}</h3>
     </div>
@@ -45,10 +41,10 @@ const Quiz = ({
 
     <div>
         <RaisedButton
-          label={isQuestionLast() && !!response ? 'Пройти заново' :'Назад'}
+          label="Назад"
           secondary={true}
           onClick={onPrevButtonClick}
-          disabled={isQuestionFirst() && !response}
+          disabled={isQuestionFirst()}
         />
         <RaisedButton
           label={isQuestionLast() ? 'Отправить' : 'Вперед'}
