@@ -2,6 +2,7 @@ import React from 'react';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 import RaisedButton from 'material-ui/RaisedButton';
 import ReactQuill from 'react-quill';
+import Avatar from 'material-ui/Avatar';
 
 import './ArticleBuilder.css';
 import EditableField from '../EditableField/EditableField';
@@ -11,7 +12,7 @@ import {
   CharacteristicValue
 } from '../CharacteristicField/CharacteristicField';
 
-const ArticleBuilder = ({ name, theme, content, onChange, onSave }) => (
+const ArticleBuilder = ({ name, avatarUrl, theme, content, onChange, onSave }) => (
   <div className="article-builder">
     <Toolbar>
       <ToolbarGroup>
@@ -35,6 +36,15 @@ const ArticleBuilder = ({ name, theme, content, onChange, onSave }) => (
       <CharacteristicValue>
         <EditableField input={{ value: name, name: 'name' }} onSubmit={onChange}>
           {name}
+        </EditableField>
+      </CharacteristicValue>
+    </CharacteristicField>
+
+    <CharacteristicField>
+      <CharacteristicKey>Avatar Url</CharacteristicKey>
+      <CharacteristicValue>
+        <EditableField input={{ value: avatarUrl, name: 'avatarUrl' }} onSubmit={onChange}>
+          <Avatar src={avatarUrl} />
         </EditableField>
       </CharacteristicValue>
     </CharacteristicField>

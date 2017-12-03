@@ -11,7 +11,7 @@ const App = ({ isLoading = false }) => isLoading
   ? <LoadingSpinner isShowing={isLoading}/>
   : (
     <Router>
-      <div>
+      <div className="app">
         <Header/>
         <Main/>
         <ReduxToastr

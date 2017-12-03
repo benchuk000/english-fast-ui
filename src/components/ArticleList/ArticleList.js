@@ -1,21 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, ListItem } from 'material-ui/List';
-import Avatar from 'material-ui/Avatar';
+import { GridList, GridTile } from 'material-ui/GridList';
+import Subheader from 'material-ui/Subheader';
 
 const ArticleList = ({ articles, renderItemContainerElement }) => (
-  <List>
+  <GridList
+    cellHeight={180}
+    cols={3}
+  >
+    <Subheader>Вам необходимо изучить следущие темы перед тестом:</Subheader>
+
     {
       articles.map(article => (
-        <ListItem
+        <GridTile
           key={article._id}
-          primaryText={article.name}
-          leftAvatar={<Avatar src={article.avatarUrl} />}
+          title={article.name}
+          style={{
+            borderRadius: 10,
+          }}
           containerElement={renderItemContainerElement(article)}
-        />
+        >
+          <img src={article.avatarUrl} />
+        </GridTile>
       ))
     }
-  </List>
+  </GridList>
 );
 
 ArticleList.propsTypes = {

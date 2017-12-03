@@ -1,9 +1,11 @@
-import { List, ListItem } from 'material-ui/List';
-
+import React from 'react';
 import QuizAnswers from '../QuizAnswers/QuizAnswers';
 import RaisedButton from 'material-ui/RaisedButton';
-import React from 'react';
 import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
+import './Quiz.css';
 
 const Quiz = ({
   data,
@@ -23,44 +25,49 @@ const Quiz = ({
   isQuestionFirst,
   isQuestionLast
 }) => (
-  <div>
-    <div>
-        <h3>{`${currentQuiestionIndex + 1}. ${questionTitle}`}</h3>
-    </div>
+  <div className="quiz-container">
+    <Card>
+      <CardHeader
+        title={`${currentQuiestionIndex + 1}. ${questionTitle}`}
+      />
+      
+      <CardText>
+        <QuizAnswers
+          answers={answers.length ? answers : []}
+          data={data ? data : []}
+          type={type}
+          onChange={onChange}
+          onCheck={onCheck}
+          onDrop={onDrop}
+          onDropEnd={onDropEnd}
+          currentAnswer={currentAnswer}
+        />
+      </CardText>
 
-    <QuizAnswers
-      answers={answers.length ? answers : []}
-      data={data ? data : []}
-      type={type}
-      onChange={onChange}
-      onCheck={onCheck}
-      onDrop={onDrop}
-      onDropEnd={onDropEnd}
-      currentAnswer={currentAnswer}
-    />
+      {
+        response && (
+          <CardText>
+            {`Количесвто правильных ответов: ${response.result.filter(item => item.isCorrect).length}`}
+          </CardText>
+        )
+      }
 
-    <div>
+      <CardActions>
         <RaisedButton
           label="Назад"
           secondary={true}
           onClick={onPrevButtonClick}
           disabled={isQuestionFirst()}
         />
+
         <RaisedButton
           label={isQuestionLast() ? 'Отправить' : 'Вперед'}
           primary={true}
           onClick={onNextButtonClick}
           disabled={currentAnswer.length === 0 || !!response}
         />
-    </div>
-
-    {
-      response && (
-        <div>
-          {`Количесвто правильных ответов: ${response.result.filter(item => item.isCorrect).length}`}
-        </div>
-      )
-    }
+      </CardActions>
+    </Card>
   </div>
 );
 

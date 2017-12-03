@@ -20,9 +20,7 @@ class SkillsTestContainer extends Component {
 
   render() {
     return (
-      <Paper>
-        <Quiz/>
-      </Paper>
+      <Quiz/>
     );
   }
 }

@@ -1,0 +1,16 @@
+.dashboard {
+  padding: 20px;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+.dashboard__articles {
+  margin-bottom: 20px;
+}
+
+.dashboard__quiz {
+  padding: 20px;
+  justify-content: center;
+  display: flex;
+}
