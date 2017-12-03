@@ -41,10 +41,10 @@ const Quiz = ({
 
     <div>
         <RaisedButton
-          label="Назад"
+          label={response ? 'Готово' : 'Назад'}
           secondary={true}
           onClick={onPrevButtonClick}
-          disabled={isQuestionFirst()}
+          disabled={isQuestionFirst() || !response}
         />
         <RaisedButton
           label={isQuestionLast() ? 'Отправить' : 'Вперед'}

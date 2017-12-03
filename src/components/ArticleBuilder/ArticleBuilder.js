@@ -11,6 +11,28 @@ import {
   CharacteristicValue
 } from '../CharacteristicField/CharacteristicField';
 
+const modules = {
+  toolbar: [
+    [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+    [{size: []}],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{'list': 'ordered'}, {'list': 'bullet'}, 
+     {'indent': '-1'}, {'indent': '+1'}],
+    ['link', 'image', 'video'],
+    ['clean']
+  ],
+  clipboard: {
+    matchVisual: false,
+  }
+}
+
+const formats = [
+  'header', 'font', 'size',
+  'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet', 'indent',
+  'link', 'image', 'video'
+]
+
 const ArticleBuilder = ({ name, theme, content, onChange, onSave }) => (
   <div className="article-builder">
     <Toolbar>
@@ -52,6 +74,8 @@ const ArticleBuilder = ({ name, theme, content, onChange, onSave }) => (
       <CharacteristicKey xs="12" sm="12" md="12" lg="12">Content</CharacteristicKey>
       <CharacteristicValue xs="12" sm="12" md="12" lg="12">
         <ReactQuill
+          modules={modules}
+          formats={formats}
           value={content}
           onChange={value => onChange({ name: 'content', value })}
         />

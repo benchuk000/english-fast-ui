@@ -4,25 +4,27 @@ import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import ArticleList from '../ArticleList/ArticleList';
+import './Dashboard.css'
 
 const Dashboard = ({ articles, }) => (
   <div className="dashboard">
-    <div className="dashboard__articles">
-      <h3>Suggested articles</h3>
-
-      <ArticleList
-        articles={articles}
-        renderItemContainerElement={({ _id }) => <Link to={`/article/${_id}`}/>}
-      />
-
-      {
-        !articles.length && <p className="dashboard__no-articles-message">Article list is empty</p> 
-      }
-    </div>
+    {
+      !!articles.length && (
+        <div className="dashboard__articles">
+          <h3>Suggested articles</h3>
+    
+          <ArticleList
+            articles={articles}
+            renderItemContainerElement={({ _id }) => <Link to={`/article/${_id}`}/>}
+          />
+        </div>
+      )
+    }
+    
 
     <div className="dashboard__quiz">
       <RaisedButton
-        label="Pass test"
+        label="Click here to pass the test"
         containerElement={<Link to="/skills-test" />}
       />
     </div>

@@ -26,7 +26,7 @@ const Question = ({ title, answerType, level, type, theme, answers, trueAnswer, 
     <CharacteristicField>
       <CharacteristicKey>Title</CharacteristicKey>
       <CharacteristicValue>
-        <EditableField input={{ value: title, name: 'title' }} onSubmit={onChange}>
+        <EditableField input={{ value: title, name: 'title', multiLine: true }} onSubmit={onChange}>
           {title}
         </EditableField>
       </CharacteristicValue>
@@ -107,7 +107,7 @@ const Question = ({ title, answerType, level, type, theme, answers, trueAnswer, 
               },
               {
                 title: ENGLISH_TYPE.READING,
-                value: ENGLISH_TYPE.GRAMMAR.READING
+                value: ENGLISH_TYPE.READING
               },
               {
                 title: ENGLISH_TYPE.LISTENING,
