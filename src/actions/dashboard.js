@@ -30,7 +30,7 @@ export const getArticles = () => (dispatch, getState) => {
     .then(({ data }) => {
       dispatch(getArticlesRequestSuccess(data));
       dispatch(skillsTest.setParams({
-        level: [ getState().auth.currentUser.level ],
+        level: data.length ? [ getState().auth.currentUser.level ] : [],
         theme: data.map(article => article.theme),
       }))
     })

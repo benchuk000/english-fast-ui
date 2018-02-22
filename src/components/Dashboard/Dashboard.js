@@ -18,7 +18,7 @@ const Dashboard = ({ articles, }) => (
         />
 
         {
-          !articles.length && <p className="dashboard__no-articles-message">Article list is empty</p> 
+          !articles.length && <p className="dashboard__no-articles-message">Article list is empty</p>
         }
       </div>
 

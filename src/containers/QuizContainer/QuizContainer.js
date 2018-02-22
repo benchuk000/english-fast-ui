@@ -3,6 +3,7 @@ import * as actions from '../../actions/currentQuiz';
 import Quiz from '../../components/Quiz/Quiz';
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter} from 'react-router-dom';
 
 class QuizContainer extends React.Component {
     onChange = (event, selectedId) => this.props.setCurrentAnswer([ selectedId ]);
@@ -35,7 +36,9 @@ class QuizContainer extends React.Component {
     }
 
     onNextButtonClick = () => this.isQuestionLast() ? this.props.submitQuiz() : this.props.toNextQuestion();
-    onPrevButtonClick = () => !this.props.response && this.props.toPrevQuestion();
+    onPrevButtonClick = () => !this.props.response 
+      ? this.props.toPrevQuestion()
+      : this.props.history.push('/');
 
     isQuestionFirst = () => this.props.currentQuiestionIndex === 0;
     isQuestionLast = () => this.props.currentQuiestionIndex === this.props.questions.length - 1;
@@ -82,4 +85,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(QuizContainer);
+)(withRouter(QuizContainer));
